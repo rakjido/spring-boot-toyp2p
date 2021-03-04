@@ -32,7 +32,20 @@ Log
 * Gradle
 * JPA
 * Mysql, xtrabackup
+* Redis caching
 * Git & Github, Git Flow
 * Jenkins CI
 * nginx https
 ```
+
+
+**application.yml**
+
+```
+spring:
+  profiles:
+    active: dev
+```
+choose one in (dev, stg, prd)
+
+02. Vertical Setting
