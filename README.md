@@ -49,3 +49,8 @@ spring:
 choose one in (dev, stg, prd)
 
 02. Vertical Setting
+
+- logback
+- account와 investment의 vertical. config, repository, service, api (ResponseEntity)
+
+01. Initial Setting
