@@ -23,5 +23,7 @@ logging:
 server:
   error:
     include-stacktrace: never
-#  servlet:
-#    context-path: /doc
+
+    # swagger-doc : /doc/swagger-ui.html
+  servlet:
+    context-path: /doc

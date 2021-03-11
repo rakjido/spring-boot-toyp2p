@@ -1,5 +1,7 @@
 package rooftophero.io.toyp2p.api;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +13,14 @@ import rooftophero.io.toyp2p.service.dto.request.AccountRequestDto;
 import rooftophero.io.toyp2p.service.dto.request.AccountUpdateResponseDto;
 import rooftophero.io.toyp2p.service.dto.response.AccountResponseDto;
 
+@Api(tags = {"2. Account"})
 @RequiredArgsConstructor
 @RestController
 public class AccountApiController {
 
     private final AccountService accountService;
 
+    @ApiOperation(value = "Account 추가", notes = "Account를 추가한다.")
     @PostMapping("/api/accounts")
     public ResponseEntity<ResponseFormat> addAccount(@RequestBody AccountRequestDto accountRequestDto) {
         AccountResponseDto addedAccountResponseDto = accountService.addAccount(accountRequestDto);
@@ -24,6 +28,7 @@ public class AccountApiController {
                 Headers(), HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "Account 조회", notes = "특정 ID의 Account를 조회한다.")
     @GetMapping("/api/accounts/{id}")
     public ResponseEntity<ResponseFormat> getAccount(@PathVariable Long id) {
         AccountResponseDto accountDto = accountService.getAccount(id);
@@ -31,6 +36,7 @@ public class AccountApiController {
                 Headers(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Account 업데이트", notes = "특정한 Account를 업데이트한다.")
     @PutMapping("/api/accounts")
     public ResponseEntity<ResponseFormat> updateAccount(@RequestBody AccountUpdateResponseDto accountDto) {
         AccountResponseDto updatedAccountDto = accountService.updateAccount(accountDto);
@@ -38,6 +44,7 @@ public class AccountApiController {
                 Headers(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Account 삭제", notes = "특정 ID의 Account를 삭제한다.")
 //    @ResponseStatus(HttpStatus.NOT_IMPLEMENTED)
     @DeleteMapping("/api/accounts/{id}")
     public ResponseEntity<ResponseFormat> deleteAccount(@PathVariable Long id) {
@@ -53,5 +60,4 @@ public class AccountApiController {
 //        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + "; charset=UTF-8");
         return headers;
     }
-
 }
