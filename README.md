@@ -48,8 +48,12 @@ spring:
 ```
 choose one in (dev, stg, prd)
 
-02. Account Vertical
+v03. Swagger Doc 2.0
+
+- Applied Swagger Doc to AccountApiController
+
+v02. Account Vertical
 
 - Account Entity, Repository, Service, ApiController with ResponseEntity
 
-01. Initial Setting
+v01. Initial Setting
