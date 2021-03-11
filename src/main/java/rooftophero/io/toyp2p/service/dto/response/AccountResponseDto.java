@@ -1,4 +1,4 @@
-package rooftophero.io.toyp2p.service.dto;
+package rooftophero.io.toyp2p.service.dto.response;
 
 
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class AccountDto {
+public class AccountResponseDto {
     private Long id;
 
     private String bankName;
