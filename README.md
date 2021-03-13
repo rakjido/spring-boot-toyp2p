@@ -1,26 +1,25 @@
 # spring-boot-toyp2p
 
 
-
 spring boot toyP2P
 
-### 필수기능
+### Requirements Specification
 
 ```
-회원기능 
+* Member 
  - security + email
  - socialAuth2
-REST API 
+
+* REST API 
  - HATEOAS
  - Reponse type
  - JWT 
-Error Handling
-Validation
-ModelMapper
-Log
+
+* Log
+  - Log text file
 ```
 
-### 필수기술
+### Tech Stack
 
 ```
 * Front end
