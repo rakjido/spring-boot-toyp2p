@@ -10,10 +10,10 @@ spring boot toyP2P
 회원기능 
  - security + email
  - socialAuth2
-REST API (https://sanghaklee.tistory.com/57)
+REST API 
  - HATEOAS
  - Reponse type
- - JWT (https://sanghaklee.tistory.com/47?category=790214)
+ - JWT 
 Error Handling
 Validation
 ModelMapper
@@ -47,6 +47,10 @@ spring:
     active: dev
 ```
 choose one in (dev, stg, prd)
+
+---
+
+## Version
 
 02. Account Vertical
 
