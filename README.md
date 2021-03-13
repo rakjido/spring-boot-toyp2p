@@ -51,8 +51,8 @@ choose one in (dev, stg, prd)
 
 ## Version
 
-02. Account Vertical
+v02. Account Vertical
 
 - Account Entity, Repository, Service, ApiController with ResponseEntity
 
-01. Initial Setting
+v01. Initial Setting
