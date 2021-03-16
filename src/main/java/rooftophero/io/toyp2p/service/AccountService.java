@@ -38,7 +38,7 @@ public class AccountService {
 
     public AccountResponseDto getAccount(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new NoDataFoundException());
+                .orElseThrow(NoDataFoundException::new);
         return modelMapper.map(account, AccountResponseDto.class);
     }
 
@@ -52,7 +52,7 @@ public class AccountService {
     @Transactional
     public void deleteAccount(Long id) {
         Account account = accountRepository.findById(id)
-                .orElseThrow(() -> new NoDataFoundException());
+                .orElseThrow(NoDataFoundException::new);
         accountRepository.delete(account);
     }
 }

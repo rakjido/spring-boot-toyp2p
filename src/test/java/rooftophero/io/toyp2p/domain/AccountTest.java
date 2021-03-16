@@ -34,6 +34,7 @@ class AccountRepositoryTest {
         // When
         Account savedAccount = accountRepository.save(account);
         // Then
+        assertNotNull(savedAccount);
         assertThat(savedAccount.getBankName()).isEqualTo(account.getBankName());
         assertThat(savedAccount.getAccountNumber()).isEqualTo(account.getAccountNumber());
     }
