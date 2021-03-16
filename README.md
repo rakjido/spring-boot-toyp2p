@@ -1,16 +1,18 @@
 # spring-boot-toyp2p
 
+---
+Toy P2P Crowd Funding
 
 ### Requirements Specification
 
 ```
 * Member 
- - security + email
+ - security + email (Optional)
  - socialAuth2
 
 * REST API 
- - HATEOAS
- - Reponse type
+ - HATEOAS (Optional)
+ - ResponseEntity
  - JWT 
 
 * Log
@@ -28,6 +30,7 @@
 * Spring Boot
 * Gradle
 * JPA
+* QueryDSL
 * Mysql, xtrabackup
 * Redis caching
 * Git & Github, Git Flow
