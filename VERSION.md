@@ -2,6 +2,12 @@
 
 ## Version
 
+v05. Account Test
+ - AccountRepositoryTest
+ - AccountServiceTest
+ - AccountApiControllerTest
+
+
 v04. Account Vertical
  - JpaConfig
  - BaseTimeEntity
