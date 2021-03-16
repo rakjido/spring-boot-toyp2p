@@ -45,14 +45,4 @@ spring:
 ```
 choose one in (dev, stg, prd)
 
----
 
-## Version
-
-v03. Swagger 2.0 Documentation
-
-v02. Account Vertical
-
-- Account Entity, Repository, Service, ApiController with ResponseEntity
-
-v01. Initial Setting

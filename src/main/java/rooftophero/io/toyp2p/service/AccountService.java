@@ -10,6 +10,11 @@ import rooftophero.io.toyp2p.repository.AccountRepository;
 import rooftophero.io.toyp2p.service.dto.request.AccountRequestDto;
 import rooftophero.io.toyp2p.service.dto.request.AccountUpdateResponseDto;
 import rooftophero.io.toyp2p.service.dto.response.AccountResponseDto;
+import rooftophero.io.toyp2p.utils.MapList;
+
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -24,6 +29,11 @@ public class AccountService {
         Account account = modelMapper.map(accountRequestDto, Account.class);
         Account addedAccount = accountRepository.save(account);
         return modelMapper.map(addedAccount, AccountResponseDto.class);
+    }
+
+    public List<AccountResponseDto> getAccountList() {
+        List<Account> accountList = accountRepository.findAll();
+        return MapList.of(accountList, AccountResponseDto.class);
     }
 
     public AccountResponseDto getAccount(Long id) {
