@@ -1,10 +1,12 @@
-package rooftophero.io.toyp2p.domain;
+package rooftophero.io.toyp2p.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import rooftophero.io.toyp2p.domain.Account;
 import rooftophero.io.toyp2p.exception.NoDataFoundException;
 import rooftophero.io.toyp2p.repository.AccountRepository;
+import rooftophero.io.toyp2p.service.dto.response.AccountResponseDto;
 
 import java.util.List;
 import java.util.Optional;

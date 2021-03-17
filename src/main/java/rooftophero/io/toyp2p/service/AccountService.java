@@ -10,11 +10,10 @@ import rooftophero.io.toyp2p.repository.AccountRepository;
 import rooftophero.io.toyp2p.service.dto.request.AccountRequestDto;
 import rooftophero.io.toyp2p.service.dto.request.AccountUpdateResponseDto;
 import rooftophero.io.toyp2p.service.dto.response.AccountResponseDto;
-import rooftophero.io.toyp2p.utils.MapList;
+import rooftophero.io.toyp2p.utils.ModelMap;
+import rooftophero.io.toyp2p.utils.ModelMapList;
 
-import java.lang.reflect.Type;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -26,27 +25,28 @@ public class AccountService {
 
     @Transactional
     public AccountResponseDto addAccount(AccountRequestDto accountRequestDto) {
-        Account account = modelMapper.map(accountRequestDto, Account.class);
+//        Account account = modelMapper.map(accountRequestDto, Account.class);
+        Account account = ModelMap.of(accountRequestDto, Account.class);
         Account addedAccount = accountRepository.save(account);
-        return modelMapper.map(addedAccount, AccountResponseDto.class);
+        return ModelMap.of(addedAccount, AccountResponseDto.class);
     }
 
     public List<AccountResponseDto> getAccountList() {
         List<Account> accountList = accountRepository.findAll();
-        return MapList.of(accountList, AccountResponseDto.class);
+        return ModelMapList.of(accountList, AccountResponseDto.class);
     }
 
     public AccountResponseDto getAccount(Long id) {
         Account account = accountRepository.findById(id)
                 .orElseThrow(NoDataFoundException::new);
-        return modelMapper.map(account, AccountResponseDto.class);
+        return ModelMap.of(account, AccountResponseDto.class);
     }
 
     @Transactional
     public AccountResponseDto updateAccount(AccountUpdateResponseDto accountUpdateResponseDto) {
-        Account account = modelMapper.map(accountUpdateResponseDto, Account.class);
+        Account account = ModelMap.of(accountUpdateResponseDto, Account.class);
         Account savedAccount = accountRepository.save(account);
-        return modelMapper.map(savedAccount, AccountResponseDto.class);
+        return ModelMap.of(savedAccount, AccountResponseDto.class);
     }
 
     @Transactional

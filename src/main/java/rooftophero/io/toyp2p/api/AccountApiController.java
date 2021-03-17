@@ -63,7 +63,7 @@ public class AccountApiController {
                 Headers(), HttpStatus.OK);
     }
 
-    // TODO refactoring headers()
+    // TODO refactoring headers() to outer class
     private HttpHeaders Headers() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer [token]");

@@ -19,6 +19,8 @@ public class ResponseExceptionHandler {
                 Headers(), HttpStatus.NOT_FOUND);
     }
 
+    // TODO 400 Bad Request (AccountRequestDto format)
+
     private HttpHeaders Headers() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer [token]");
