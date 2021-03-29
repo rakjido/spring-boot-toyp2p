@@ -11,6 +11,7 @@ import rooftophero.io.toyp2p.domain.Account;
 import rooftophero.io.toyp2p.exception.NoDataFoundException;
 import rooftophero.io.toyp2p.repository.AccountRepository;
 import rooftophero.io.toyp2p.service.dto.request.AccountRequestDto;
+import rooftophero.io.toyp2p.service.dto.request.AccountUpdateResponseDto;
 import rooftophero.io.toyp2p.service.dto.response.AccountResponseDto;
 
 import java.util.List;
@@ -107,6 +108,66 @@ class AccountServiceTest {
         assertThat(accountResponseDto.getBankName()).isEqualTo(bankName);
     }
 
+    @Test
+    public void updateAccountIsNull() throws Exception {
+        // Given
+        Long id = 1L;
+        String bankName = "Kb Bank";
+        String accountNumber = "2151-1351";
+        AccountUpdateResponseDto accountUpdateResponseDto = mockUpdateRequestDto(id, bankName, accountNumber);
+
+        when(accountRepository.save(any())).thenThrow(new IllegalArgumentException("IllegalArgumentException"));
+        // When
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            AccountResponseDto accountResponseDto = accountService.updateAccount(accountUpdateResponseDto);
+        });
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("IllegalArgumentException");
+    }
+
+    @Test
+    public void updateAccount() throws Exception {
+        // Given
+        Long id = 1L;
+        String bankName = "Kb Bank";
+        String accountNumber = "2151-1351";
+        Account account = mockAccount(id, bankName, accountNumber);
+        AccountUpdateResponseDto updateResponseDto = mockUpdateRequestDto(id, bankName, accountNumber);
+        when(accountRepository.save(any())).thenReturn(account);
+
+        // When
+        accountService.updateAccount(updateResponseDto);
+        // Then
+        verify(accountRepository, times(1)).save(any(Account.class));
+    }
+
+    @Test
+    public void deleteAccountNotFound() throws Exception {
+        // Given
+        when(accountRepository.findById(1L))
+                .thenReturn(Optional.empty());
+        // When
+        NoDataFoundException exception = assertThrows(NoDataFoundException.class, () -> {
+            accountService.deleteAccount(1L);
+        });
+        // Then
+        assertThat(exception.getMessage()).isEqualTo("No Data Found");
+    }
+
+
+    @Test
+    public void deleteAccount() throws Exception {
+        // Given
+        when(accountRepository.findById(1L))
+                .thenReturn(Optional.of(mockAccount(1L, "Kb Bank", "2151-1351")));
+        // When
+        accountService.deleteAccount(1L);
+        // Then
+        verify(accountRepository, times(1)).delete(any(Account.class));
+    }
+
+
+
     private Account mockAccount(Long id, String bankName, String accountNumber){
         return Account.builder()
                 .id(id)
@@ -123,6 +184,14 @@ class AccountServiceTest {
 
     private AccountRequestDto mockRequestDto(String bankName, String accountNumber) {
         return AccountRequestDto.builder()
+                .bankName(bankName)
+                .accountNumber(accountNumber)
+                .build();
+    }
+
+    private AccountUpdateResponseDto mockUpdateRequestDto(Long id, String bankName, String accountNumber) {
+        return AccountUpdateResponseDto.builder()
+                .id(id)
                 .bankName(bankName)
                 .accountNumber(accountNumber)
                 .build();
