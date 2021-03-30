@@ -30,16 +30,11 @@ class AccountServiceTest {
     @Mock
     private AccountRepository accountRepository;
 
-    @Mock
-    private ModelMapper modelMapper;
-
     @BeforeEach
     public void init() {
         // Mock Configuration
         MockitoAnnotations.initMocks(this);
 
-        // ModelMapper Mock
-//        when(modelMapper.map(any(), any())).thenReturn(mockResponseAccount(1L, "Kb Bank", "2151-1351"));
     }
 
     @Test
